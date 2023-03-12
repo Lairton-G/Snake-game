@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style type="text/css">
+        body {
+            image-rendering: pixelated;
+            image-rendering: optimizeQuality;
+            zoom: 5;
+            overflow-y: hidden;
+        }
+        canvas {
+            background-color: #2f2f5a;
+            position: relative;
+        }
+        .scores {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 5px;
+            background-color: #2f2f5a;
+            width: 96px;
+            padding: 0.4em;
+            color: white;
+        }
+        .gif {
+            width: 120px;
+            height: 120px;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+        }
+        .gif img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="screen" width="100" height="100">
+    </canvas>
+    <div class="scores">
+        <span id="scores">0</span> Score
+    </div>
+    <div class="gif" id="gif">
+        <img src="https://th.bing.com/th/id/R.16e9636727079f9d9d671a2a6425cc03?rik=kg%2bxLbyDN2dZjA&pid=ImgRaw&r=0" alt="">
+    </div>
+    <script type="module" src="snake.js"></script>
+    <!-- Desenvolvido por Lairton Goncalves -->
+</body>
+</html>
