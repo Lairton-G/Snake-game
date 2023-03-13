@@ -26,8 +26,8 @@ function gameSnake () {
 	this.trail = [];
 
 	// Posição x e y da fruta com valores randomicos
-	this.appleX = Math.floor(Math.random() * screen.width-1);
-	this.appleY = Math.floor(Math.random() * screen.height-1);
+	this.appleX = Math.floor(Math.random() * screen.width);
+	this.appleY = Math.floor(Math.random() * screen.height);
 	this.drowApple =() =>{
 		// Desenha a cobrinha na tela
 		ctx.fillStyle = "red";
