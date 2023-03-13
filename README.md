@@ -1,6 +1,6 @@
 <img src="./snake-game.PNG" width="70%">
 
-Jogo da cobrinha 
+Jogo da cobrinha jogue **[aqui](https://lairton-g.github.io/Snake-game/)**
 
 ## Tecnologias Usada
 
