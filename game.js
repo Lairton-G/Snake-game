@@ -4,37 +4,41 @@ const scores = document.getElementById("scores");
 var audioSoundTome = new Audio("./sounds/tome-rodrigo-faro_xDXKGwq.mp3");
 var huhShit = new Audio("./sounds/huh-shitpost.mp3");
 var gifTheRock = document.getElementById("gif");
+var level = document.getElementById("level");
 function gameSnake () {
 	// Tamanho da cobrinha
-	this.t = 2;
+	this.t = 10;
+	// Velocidade da cobinha
+	this.vel = 1;
+	// Tamanho da maçã
+	this.appleT = this.t + 1;
 	// Posição x e y da cobrinha
 	this.x = 5;
 	this.y = 5;
-
 	// Direção de movimento x e y
 	this.nextX = 0;
 	this.nextY = 0;
 
 	// Tamanho da cauda
-	this.tail = 5;
+	this.tail = 10;
 
 	// Rastro da cobrinha
 	this.trail = [];
 
 	// Posição x e y da fruta com valores randomicos
-	this.appleX = Math.floor(Math.random() * 80);
-	this.appleY = Math.floor(Math.random() * 80);
+	this.appleX = Math.floor(Math.random() * 70);
+	this.appleY = Math.floor(Math.random() * 70);
 	this.drowApple =() =>{
 		// Desenha a cobrinha na tela
 		ctx.fillStyle = "red";
-		ctx.fillRect(this.appleX, this.appleY, this.t,this.t);
+		ctx.fillRect(this.appleX, this.appleY, this.appleT,this.appleT);
 	}
 
 	this.drowSnake=()=> {
 
-		ctx.clearRect(0,0,100,100)
+		ctx.clearRect(0,0,screen.width,screen.height)
 		// Desenha a cobrinha na tela atravez dos rastros e do tamanho da cobrinha
-		ctx.fillStyle = "yellow";
+		ctx.fillStyle = "white";
 		for(var count = 0; count < this.trail.length; count++){
 			ctx.fillRect(this.trail[count].x, this.trail[count].y, this.t,this.t);
 
@@ -74,26 +78,36 @@ function gameSnake () {
 		// Verifica se a cobrinha comeu a maçã
 		if (this.x == this.appleX && this.y == this.appleY){
 			scores.innerText++;
-			this.tail+=5;
-			this.appleX = Math.floor(Math.random() * 80);
-			this.appleY = Math.floor(Math.random() * 80);
+			this.tail+=10;
+			if(Number(scores.innerText) > 50) {
+				this.vel = 2;
+				level.innerText = 2;
+			}else if(Number(scores.innerText) > 100) {
+				level.innerText = 3;
+				this.vel = 5;
+			}else if(Number(scores.innerText) > 150) {
+				level.innerText = 4;
+				this.vel = 10;
+			}
+			this.appleX = Math.floor(Math.random() * 70);
+			this.appleY = Math.floor(Math.random() * 70);
 			audioSoundTome.play()
 		}
 		this.drowSnake();
-	}
+		}
 	this.KeyPRESS = (event) => {
 		if(event.key == "ArrowUp") {
-			this.nextY = -1;
+			this.nextY = -this.vel;
 			this.nextX = 0;
 		}else if(event.key == "ArrowDown") {
-			this.nextY = 1;
+			this.nextY = this.vel;
 			this.nextX = 0;
 		}else if(event.key == "ArrowLeft") {
 			this.nextY = 0;
-			this.nextX = -1;
+			this.nextX = -this.vel;
 		}else if(event.key == "ArrowRight") {
 			this.nextY = 0;
-			this.nextX = 1;
+			this.nextX = this.vel;
 		}
 		this.moveSnake();
 	}
