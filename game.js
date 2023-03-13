@@ -26,8 +26,8 @@ function gameSnake () {
 	this.trail = [];
 
 	// Posição x e y da fruta com valores randomicos
-	this.appleX = Math.floor(Math.random() * screen.width-5) + 40;
-	this.appleY = Math.floor(Math.random() * screen.height-5)+ 40;
+	this.appleX = Math.floor(Math.random() * screen.width-1);
+	this.appleY = Math.floor(Math.random() * screen.height-1);
 	this.drowApple =() =>{
 		// Desenha a cobrinha na tela
 		ctx.fillStyle = "red";
@@ -89,8 +89,8 @@ function gameSnake () {
 				level.innerText = 4;
 				this.vel = 10;
 			}
-			this.appleX = Math.floor(Math.random() * 70);
-			this.appleY = Math.floor(Math.random() * 70);
+			this.appleX = Math.floor(Math.random() * screen.width);
+			this.appleY = Math.floor(Math.random() * screen.height);
 			audioSoundTome.play()
 		}
 		this.drowSnake();
